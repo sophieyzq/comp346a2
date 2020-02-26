@@ -21,7 +21,7 @@ public class Client extends Thread {
     private static int numberOfTransactions;   		/* Number of transactions to process */
     private static int maxNbTransactions;      		/* Maximum number of transactions */
     private static Transactions [] transaction; 	/* Transactions to be processed */
-    private static Network objNetwork;          	/* Client object to handle network operations */
+    //private static Network objNetwork;          	/* Client object to handle network operations */
     private String clientOperation;    				/* sending or receiving */
     
 	/** Constructor method of Client class
@@ -37,18 +37,22 @@ public class Client extends Thread {
            numberOfTransactions = 0;
            maxNbTransactions = 100;
            transaction = new Transactions[maxNbTransactions];  
-           objNetwork = new Network("client");
+           //Network = new Network("client");
            clientOperation = operation; 
-           System.out.println("\n Initializing the transactions ... ");
-           readTransactions();
-           System.out.println("\n Connecting client to network ...");
-           String cip = objNetwork.getClientIP();
-           if (!(objNetwork.connect(cip)))
-           {   System.out.println("\n Terminating client application, network unavailable");
-               System.exit(0);
+           if(Network.getNetworkStatus().equalsIgnoreCase("active")) {
+               System.out.println("\n Initializing the transactions ... ");
+               readTransactions();
+               System.out.println("\n Connecting client to network ...");
+               String cip = Network.getClientIP();
+         	  if(!(Network.connect(cip))) {
+         		 System.out.println("\n Terminating client application, network unavailable");
+         	        System.exit(0);
+         	  }
            }
+
        	}
        else
+    	   //don't need to verify the connection because sending has already confirmed
     	   if (operation.equals("receiving"))
            { 
     		   System.out.println("\n Initializing client receiving application ...");
@@ -161,7 +165,7 @@ public class Client extends Thread {
             // while( objNetwork.getInBufferStatus().equals("full") );     /* Alternatively, busy-wait until the network input buffer is available */
             
         	//when in-buffer is full, client needs to wait and consume cpu
-        	 while( objNetwork.getInBufferStatus().equals("full")) {
+        	 while( Network.getInBufferStatus().equals("full")) {
         		 Thread.yield();
         		 
         	 }
@@ -170,7 +174,7 @@ public class Client extends Thread {
            
             //System.out.println("\n DEBUG : Client.sendTransactions() - sending transaction on account " + transaction[i].getAccountNumber());
             
-            objNetwork.send(transaction[i]);                            /* Transmit current transaction */
+            Network.send(transaction[i]);                            /* Transmit current transaction */
             i++;
          }
          
@@ -192,11 +196,11 @@ public class Client extends Thread {
         	 // while( objNetwork.getOutBufferStatus().equals("empty"));  	/* Alternatively, busy-wait until the network output buffer is available */
             
         	//when out-buffer is empty, client needs to wait and consume cpu
-        	 while( objNetwork.getOutBufferStatus().equals("empty")) {
+        	 while( Network.getOutBufferStatus().equals("empty")) {
         		 Thread.yield();
         	 }
         	 
-            objNetwork.receive(transact);                               	/* Receive updated transaction from the network buffer */
+            Network.receive(transact);                               	/* Receive updated transaction from the network buffer */
             
             //System.out.println("\n DEBUG : Client.receiveTransactions() - receiving updated transaction on account " + transact.getAccountNumber());
             
@@ -213,7 +217,7 @@ public class Client extends Thread {
      */
      public String toString() 
      {
-    	 return ("\n client IP " + objNetwork.getClientIP() + " Connection status" + objNetwork.getClientConnectionStatus() + "Number of transactions " + getNumberOfTransactions());
+    	 return ("\n client IP " + Network.getClientIP() + " Connection status" + Network.getClientConnectionStatus() + "Number of transactions " + getNumberOfTransactions());
      }
     
     /** Code for the run method
@@ -246,8 +250,8 @@ public class Client extends Thread {
                 System.out.println("\n Terminating client receiving thread - " + " Running time " + (receiveClientEndTime - receiveClientStartTime) + " milliseconds"); 
         	}
         	
-        	while(!(objNetwork.getInBufferStatus().equalsIgnoreCase("empty")&&objNetwork.getOutBufferStatus().equalsIgnoreCase("empty"))) {};
-        	objNetwork.disconnect(objNetwork.getClientIP());	
+        	while(!(Network.getInBufferStatus().equalsIgnoreCase("empty")&&Network.getOutBufferStatus().equalsIgnoreCase("empty"))) {};
+        	Network.disconnect(Network.getClientIP());	
    
     }
 }

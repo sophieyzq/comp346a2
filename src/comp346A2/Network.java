@@ -30,13 +30,13 @@ public class Network extends Thread {
      * @return 
      * @param
      */
-     Network(String context)
+     Network()
       { 
     	 int i;  
         
     	 /* Initialization of the network components */
-        if (context.equals("network"))
-          {
+        //if (context.equals("network"))
+          //{
             System.out.println("\n Activating the network ...");
             clientIP = "192.168.2.0";
             serverIP = "216.120.40.10";
@@ -57,9 +57,9 @@ public class Network extends Thread {
             outputIndexServer = 0;
             outputIndexClient = 0;
             networkStatus = "active";
-        }
-        else /* Activate network components for client or server */
-            System.out.println("\n Activating network components for " + context + "...");
+        //}
+        //else /* Activate network components for client or server */
+            //System.out.println("\n Activating network components for " + context + "...");
       }     
          
      /** 
@@ -68,7 +68,7 @@ public class Network extends Thread {
      * @return clientIP
      * @param
      */
-     public String getClientIP()
+     public static String getClientIP()
      {
          return clientIP;
      }
@@ -79,7 +79,7 @@ public class Network extends Thread {
      * @return 
      * @param cip
      */
-     public void setClientIP(String cip)
+     public static void setClientIP(String cip)
      { 
          clientIP = cip;
      }
@@ -90,7 +90,7 @@ public class Network extends Thread {
      * @return serverIP
      * @param
      */
-     public String getServerIP()
+     public static String getServerIP()
      {
          return serverIP;
      }
@@ -101,7 +101,7 @@ public class Network extends Thread {
      * @return 
      * @param sip
      */
-     public void setServerIP(String sip)
+     public static void setServerIP(String sip)
      { 
          serverIP = sip;
      }
@@ -112,7 +112,7 @@ public class Network extends Thread {
      * @return clientConnectionStatus
      * @param
      */
-     public String getClientConnectionStatus()
+     public static String getClientConnectionStatus()
      {
          return clientConnectionStatus;
      }
@@ -123,7 +123,7 @@ public class Network extends Thread {
      * @return 
      * @param connectStatus
      */
-     public void setClientConnectionStatus(String connectStatus)
+     public static void setClientConnectionStatus(String connectStatus)
      { 
          clientConnectionStatus = connectStatus;
      }
@@ -134,7 +134,7 @@ public class Network extends Thread {
      * @return serverConnectionStatus
      * @param
      */
-     public String getServerConnectionStatus()
+     public static String getServerConnectionStatus()
      {
          return serverConnectionStatus;
      }
@@ -145,7 +145,7 @@ public class Network extends Thread {
      * @return 
      * @param connectStatus
      */
-     public void setServerConnectionStatus(String connectStatus)
+     public static void setServerConnectionStatus(String connectStatus)
      { 
          serverConnectionStatus = connectStatus;
      } 
@@ -167,7 +167,7 @@ public class Network extends Thread {
      * @return 
      * @param pid
      */
-     public void setPortID(int pid)
+     public static void setPortID(int pid)
      { 
          portID = pid;
      }
@@ -178,7 +178,7 @@ public class Network extends Thread {
      * @return inBufferStatus
      * @param
      */
-     public String getInBufferStatus()
+     public static String getInBufferStatus()
      {
          return inBufferStatus;
      }
@@ -189,7 +189,7 @@ public class Network extends Thread {
      * @return 
      * @param inBufStatus
      */
-     public void setInBufferStatus(String inBufStatus)
+     public static  void setInBufferStatus(String inBufStatus)
      { 
          inBufferStatus = inBufStatus;
      }
@@ -200,7 +200,7 @@ public class Network extends Thread {
      * @return outBufferStatus
      * @param
      */
-     public String getOutBufferStatus()
+     public static String getOutBufferStatus()
      {
          return outBufferStatus;
      }
@@ -211,7 +211,7 @@ public class Network extends Thread {
      * @return 
      * @param outBufStatus
      */
-     public void setOutBufferStatus(String outBufStatus)
+     public static  void setOutBufferStatus(String outBufStatus)
      { 
          outBufferStatus = outBufStatus;
      }
@@ -222,7 +222,7 @@ public class Network extends Thread {
      * @return networkStatus
      * @param
      */
-     public String getNetworkStatus()
+     public static String getNetworkStatus()
      {
          return networkStatus;
      }
@@ -233,7 +233,7 @@ public class Network extends Thread {
      * @return 
      * @param netStatus
      */
-     public void setNetworkStatus(String netStatus)
+     public static void setNetworkStatus(String netStatus)
      { 
          networkStatus = netStatus;
      }
@@ -244,7 +244,7 @@ public class Network extends Thread {
      * @return inputIndexClient
      * @param
      */
-     public int getinputIndexClient()
+     public static int getinputIndexClient()
      {
          return inputIndexClient;
      }
@@ -255,7 +255,7 @@ public class Network extends Thread {
      * @return 
      * @param i1
      */
-     public void setinputIndexClient(int i1)
+     public static void setinputIndexClient(int i1)
      { 
          inputIndexClient = i1;
      }
@@ -266,7 +266,7 @@ public class Network extends Thread {
      * @return inputIndexServer
      * @param
      */
-     public int getinputIndexServer()
+     public static int getinputIndexServer()
      {
          return inputIndexServer;
      }
@@ -277,7 +277,7 @@ public class Network extends Thread {
      * @return 
      * @param i2
      */
-     public void setinputIndexServer(int i2)
+     public static void setinputIndexServer(int i2)
      { 
          inputIndexServer = i2;
      }     
@@ -288,7 +288,7 @@ public class Network extends Thread {
      * @return outputIndexServer
      * @param
      */
-     public int getoutputIndexServer()
+     public static int getoutputIndexServer()
      {
          return outputIndexServer;
      }
@@ -299,7 +299,7 @@ public class Network extends Thread {
      * @return 
      * @param o1
      */
-     public void setoutputIndexServer(int o1)
+     public static void setoutputIndexServer(int o1)
      { 
          outputIndexServer = o1;
      }
@@ -310,7 +310,7 @@ public class Network extends Thread {
      * @return outputIndexClient
      * @param
      */
-     public int getoutputIndexClient()
+     public static int getoutputIndexClient()
      {
          return outputIndexClient;
      }
@@ -321,7 +321,7 @@ public class Network extends Thread {
      * @return 
      * @param o2
      */
-     public void setoutputIndexClient(int o2)
+     public static void setoutputIndexClient(int o2)
      { 
          outputIndexClient = o2;
      }
@@ -332,7 +332,7 @@ public class Network extends Thread {
 	 * @return maxNbPackets
 	 * @param
 	 */
-	 public int getMaxNbPackets()
+	 public static int getMaxNbPackets()
 	 {
 	     return maxNbPackets;
 	 }
@@ -343,7 +343,7 @@ public class Network extends Thread {
      * @return 
      * @param maxPackets
      */
-     public void setMaxNbPackets(int maxPackets)
+     public static void setMaxNbPackets(int maxPackets)
      { 
          maxNbPackets = maxPackets;
      }
@@ -355,7 +355,7 @@ public class Network extends Thread {
      * @param inPacket transaction transferred from the client
      * 
      */
-         public boolean send(Transactions inPacket)
+         public static boolean send(Transactions inPacket)
         {
             inComingPacket[inputIndexClient].setAccountNumber(inPacket.getAccountNumber());
             inComingPacket[inputIndexClient].setOperationType(inPacket.getOperationType());
@@ -387,7 +387,7 @@ public class Network extends Thread {
      * @param outPacket updated transaction received by the client
      * 
      */
-         public boolean receive(Transactions outPacket)
+         public static boolean receive(Transactions outPacket)
         {
             outPacket.setAccountNumber(outGoingPacket[outputIndexClient].getAccountNumber());
             outPacket.setOperationType(outGoingPacket[outputIndexClient].getOperationType());
@@ -420,7 +420,7 @@ public class Network extends Thread {
      * @param outPacket updated transaction transferred by the server to the network output buffer
      * 
      */
-         public boolean transferOut(Transactions outPacket)
+         public static  boolean transferOut(Transactions outPacket)
         {
             outGoingPacket[inputIndexServer].setAccountNumber(outPacket.getAccountNumber());
             outGoingPacket[inputIndexServer].setOperationType(outPacket.getOperationType());
@@ -452,7 +452,7 @@ public class Network extends Thread {
      * @param inPacket transaction transferred from the input buffer to the server 
      * 
      */
-         public boolean transferIn(Transactions inPacket)
+         public static boolean transferIn(Transactions inPacket)
         {
 		//System.out.println("\n DEBUG : Network.transferIn - account number " + inComingPacket[outputIndexServer].getAccountNumber());
             inPacket.setAccountNumber(inComingPacket[outputIndexServer].getAccountNumber());
@@ -486,7 +486,7 @@ public class Network extends Thread {
       * @param IP
       * 
       */
-     public boolean connect(String IP)
+     public static boolean connect(String IP)
      {
          if (getNetworkStatus().equals("active"))
          {
@@ -512,7 +512,7 @@ public class Network extends Thread {
       * @param IP
       * 
       */
-     public boolean disconnect(String IP)
+     public static boolean disconnect(String IP)
      {
           if (getNetworkStatus( ).equals("active"))
          {
@@ -536,10 +536,13 @@ public class Network extends Thread {
       * 
       * @return String representation
       */
-	    public String toString() 
+	    /*public String toString() 
 	    {
 	        return ("\n Network status " + getNetworkStatus() + "Input buffer " + getInBufferStatus() + "Output buffer " + getOutBufferStatus());
-	    }
+	    }*/
+     public static void networkStatus() {
+    	 System.out.println("\n Network status " + getNetworkStatus() + "Input buffer " + getInBufferStatus() + "Output buffer " + getOutBufferStatus());
+     }
     
      /***********************************************************************************************************************************************
       * TODO : implement the method Run() to execute the server thread				 																*
