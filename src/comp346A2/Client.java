@@ -165,10 +165,10 @@ public class Client extends Thread {
             // while( objNetwork.getInBufferStatus().equals("full") );     /* Alternatively, busy-wait until the network input buffer is available */
             
         	//when in-buffer is full, client needs to wait and consume cpu
-        	 while( Network.getInBufferStatus().equals("full")) {
+        	 /*while( Network.getInBufferStatus().equals("full")) {
         		 Thread.yield();
         		 
-        	 }
+        	 }*/
         	 
             transaction[i].setTransactionStatus("sent");   /* Set current transaction status */
            
@@ -196,9 +196,9 @@ public class Client extends Thread {
         	 // while( objNetwork.getOutBufferStatus().equals("empty"));  	/* Alternatively, busy-wait until the network output buffer is available */
             
         	//when out-buffer is empty, client needs to wait and consume cpu
-        	 while( Network.getOutBufferStatus().equals("empty")) {
+        	 /*while( Network.getOutBufferStatus().equals("empty")) {
         		 Thread.yield();
-        	 }
+        	 }*/
         	 
             Network.receive(transact);                               	/* Receive updated transaction from the network buffer */
             
